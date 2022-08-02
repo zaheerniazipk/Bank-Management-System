@@ -45,15 +45,14 @@ class Bank {
 int main(){
 	
 	cout<<"************************************************************************************\n"
-	    <<"*                              Bank Management System                              *\n"
-		<<"************************************************************************************\n\n";	
-	
+	<<"*                              Bank Management System                              *\n"
+	<<"************************************************************************************\n\n";
+		
 	// instaniate an object	
 	Bank b;
 	
 	// calling member functions using object
 	b.choice();
-	
 	
 	getch(); // get characters
 	
@@ -65,16 +64,17 @@ int main(){
 void Bank::choice(){
 	
 	while (1){
-		cout<<"\n\n\nChoice Menu:"<<endl;
-		cout<<"************************************************************\n"<<endl;
+		
+		cout<<"\n\nChoice Menu:"<<endl;
+		cout<<"************************************************************"<<endl;
 		cout<<"1. Create a new account"<<endl;
 		cout<<"2. View customer's list"<<endl;
 		cout<<"3. Update information of an existing account"<<endl;
 		cout<<"4. Check the details of an existing account"<<endl;
-		cout<<"5. For transactions"<<endl;
+		cout<<"5. Withdraw or deposit transactions"<<endl;
 		cout<<"6. Remove an existing Account"<<endl;
 		cout<<"7. Exit"<<endl;
-		cout<<"\n************************************************************\n"<<endl;
+		cout<<"************************************************************\n"<<endl;
 		
 		char ch;
 		cout<<"Your Choice : ";
@@ -91,41 +91,54 @@ void Bank::choice(){
 				break;
 				
 			case '2':
-				if(total==0)
+				if(total==0){
+				cout<<"\n************************************************************"<<endl;
 				cout<<"No data is entered"<<endl;
+				}
 				else
 				Bank::showData();
 				break;
 				
 			case '3':
-				if(total==0)
-				cout<<"No data is entered"<<endl;
+				if(total==0){
+					cout<<"\n************************************************************"<<endl;
+					cout<<"No data is entered"<<endl;
+				}
 				else
 				Bank::updateData();
 				break;
 			
 			case '4':
-				if(total==0)
-				cout<<"No data is entered"<<endl;
+				if(total==0){
+					cout<<"\n************************************************************"<<endl;
+					cout<<"No data is entered"<<endl;
+				}
 				else
 				Bank::searchData();
 				break;
 
 			case '5':
-				if(total==0)
-				cout<<"No data is entered"<<endl;
+				if(total==0){
+					cout<<"\n************************************************************"<<endl;
+					cout<<"No data is entered"<<endl;
+				}
 				else
 				Bank::transactions();
 				break;
 	
 			case '6':
-				if(total==0)
-				cout<<"No data is entered"<<endl;
+				if(total==0){
+					cout<<"\n************************************************************"<<endl;
+					cout<<"No data is entered"<<endl;
+				}
 				else
 				Bank::deleteData();
 				break;
 	
 			case '7':
+				cout<<"\n************************************************************\n"<<endl;
+				cout<<"        Thanks for Using our Software! \n";
+				cout<<"\n************************************************************"<<endl;
 				exit(0);
 				break;
 	
@@ -141,48 +154,60 @@ void Bank::choice(){
 
 
 void Bank::personData(){
-	cout<<"\n\nEnter data of a person "<<total+1<<endl;
 	
+	cout<<"***************************************************************\n";
+	cout<<"              Creating new account \n";
+	cout<<"***************************************************************\n\n";
+	
+	
+	cout<<"Enter data of a person "<<total+1<<endl;
 	cout<<"*********************************************************\n";
 	
-	cout<<"Person name : ";
+	cout<<"Person name            :  ";
 	cin.ignore();
 	cin.getline(person[total].name, 50);
 	
 	
-	cout<<"ID : ";
+	cout<<"ID                     :  ";
 	cin>>person[total].ID;
 	
-	cout<<"Address : ";
+	cout<<"Address                :  ";
 	cin.ignore();
 	cin.getline(person[total].address, 50);
 	
 	
-	cout<<"Contact : ";
+	cout<<"Contact                :  ";
 	cin>>person[total].contact;
 	
-	cout<<"Cash : ";
+	cout<<"Cash                   :  ";
 	cin>>person[total].cash;
 	
-	cout<<"\n***************************************************************\n";
+	cout<<"***************************************************************\n";
 	
 	total++;  	// increment	
+	
+	cout<<"Data entered successfully!\n\n\n";
 	
 } // end of personData()
 
 
 void Bank::showData(){
+	
+	cout<<"***************************************************************\n";
+	cout<<"              Record list of an account holders \n";
+	cout<<"***************************************************************\n\n";
+	
 	// show customers data
 	for (int i=0; i<total; i++){
-		cout<<"\n\n";
-		cout<<"*********************************************************\n";
+	
 		cout<<"Data of a person "<<i+1<<endl;
-		cout<<"Name : "<<person[i].name<<endl;
-		cout<<"ID : "<<person[i].ID<<endl;
-		cout<<"Address : "<<person[i].address<<endl;
-		cout<<"Contact : "<<person[i].contact<<endl;
-		cout<<"Cash : "<<person[i].cash<<endl;
-		cout<<"\n***************************************************************\n";
+		cout<<"*********************************************************\n";
+		cout<<"Name                :  "<<person[i].name<<endl;
+		cout<<"ID                  :  "<<person[i].ID<<endl;
+		cout<<"Address             :  "<<person[i].address<<endl;
+		cout<<"Contact             :  "<<person[i].contact<<endl;
+		cout<<"Cash                :  "<<person[i].cash<<endl;
+		cout<<"***************************************************************\n";
 		
 	} // end of loop
 	
@@ -190,52 +215,55 @@ void Bank::showData(){
 
 
 void Bank::updateData(){
-	cout<<"Enter id of person, those data you want to update : ";
+	cout<<"***************************************************************\n";
+	cout<<"              Updating data of an account holder \n";
+	cout<<"***************************************************************\n\n";
+
+	cout<<"Enter id of person, whom data you want to update : ";
 	cin>>id;
 	
 	for (int i=0; i<total; i++){
 		if (id == person[i].ID){
 			
 			// Previous Data			
-			cout<<"Previous Data of a person : "<<endl;
+			cout<<"\n\nPrevious Data of a person "<<i+1<<endl;
 			cout<<"*********************************************************\n";
-			cout<<"Data of a person "<<i+1<<endl;
-			cout<<"Name : "<<person[i].name<<endl;
-			cout<<"ID : "<<person[i].ID<<endl;
-			cout<<"Address : "<<person[i].address<<endl;
-			cout<<"Contact : "<<person[i].contact<<endl;
-			cout<<"Cash : "<<person[i].cash<<endl;
-			cout<<"\n***************************************************************\n\n";
+			cout<<"Name                :  "<<person[i].name<<endl;
+			cout<<"ID                  :  "<<person[i].ID<<endl;
+			cout<<"Address             :  "<<person[i].address<<endl;
+			cout<<"Contact             :  "<<person[i].contact<<endl;
+			cout<<"Cash                :  "<<person[i].cash<<endl;
+			cout<<"***************************************************************\n\n\n";
 			
 			// Updating Data
-			cout<<"Enter Newer Data : "<<endl;
+			cout<<"Update Newer Data "<<i+1<<endl;
 			cout<<"*********************************************************\n";
-			cout<<"Person name : ";
+			cout<<"Person name         :  ";
 			cin.ignore();
 			cin.getline(person[total].name, 50);
 			
 			
-			cout<<"ID : ";
+			cout<<"ID                  :  ";
 			cin>>person[total].ID;
 			
-			cout<<"Address : ";
+			cout<<"Address             :  ";
 			cin.ignore();
 			cin.getline(person[total].address, 50);
 			
 			
-			cout<<"Contact : ";
+			cout<<"Contact             :  ";
 			cin>>person[total].contact;
 			
-			cout<<"Cash : ";
+			cout<<"Cash                :  ";
 			cin>>person[total].cash;
 			
-			cout<<"\n***************************************************************\n";			
+			cout<<"***************************************************************\n";			
 			
 		} // end of if conditonal statement
 		break;
 		
 		if(i==total-1){
-
+			cout<<"\n************************************************************"<<endl;
 			cout<<"No such record found"<<endl;
 
 		}
@@ -248,73 +276,101 @@ void Bank::updateData(){
 
 
 void Bank::searchData(){
-	cout<<"\n\nEnter id of person, those data you want to search"<<endl;
+	cout<<"***************************************************************\n";
+	cout<<"              Search data of an account holder \n";
+	cout<<"***************************************************************\n\n";
+	
+	cout<<"Enter id of person, whom data you want to search : ";
 	cin>>id;
 
-
-//	cout<<"*********************************************************\n";
 
 	for(int i=0;i<total;i++){
 	
 		if(id==person[i].ID){
-	
-			cout<<"Name: "<<person[i].name<<endl;
-			cout<<"ID: "<<person[i].ID<<endl;
-			cout<<"Address: "<<person[i].address<<endl;
-			cout<<"Contact: "<<person[i].contact<<endl;
-			cout<<"Cash: "<<person[i].cash<<endl;
-			
+			cout<<"\n\nData of a person "<<i+1<<endl;
+			cout<<"*********************************************************\n";
+			cout<<"Name                :  "<<person[i].name<<endl;
+			cout<<"ID                  :  "<<person[i].ID<<endl;
+			cout<<"Address             :  "<<person[i].address<<endl;
+			cout<<"Contact             :  "<<person[i].contact<<endl;
+			cout<<"Cash                :  "<<person[i].cash<<endl;
+			cout<<"***************************************************************\n";
+				
 			break;
 	
 		}
 	
 		if(i==total-1){
-	
+			cout<<"\n************************************************************"<<endl;
 			cout<<"No such record found"<<endl;
 	
 		}
 	
-	}
+	} // end of for loop
 	
-}
+} // enf of searchData()
+
 
 void Bank::transactions(){
+	
+	cout<<"***************************************************************\n";
+	cout<<"              Transactions of an account holder \n";
+	cout<<"***************************************************************\n\n";
 
-	int cash;
+	int cash, a , b;
 	char ch;
 
-	cout<<"Enter id of person, those data you want to transaction"<<endl;
+	cout<<"Enter id of person, whom need to withdraw/deposit amount : ";
 	cin>>id;
 
      for(int i=0;i<total;i++){
 
      	if(id==person[i].ID){
-		 	cout<<"Name: "<<person[i].name<<endl;
-     		cout<<"Address: "<<person[i].address<<endl;
-		    cout<<"Contact: "<<person[i].contact<<endl;
-		    cout<<"\nExisting Cash "<<person[i].cash<<endl;
+     		cout<<"\n\nData of a person "<<i+1<<endl;
+     		cout<<"*********************************************************\n";
+		 	cout<<"Name                :  "<<person[i].name<<endl;
+     		cout<<"Address             :  "<<person[i].address<<endl;
+		    cout<<"Contact             :  "<<person[i].contact<<endl;
+		    cout<<"Existing Cash       :  "<<person[i].cash<<" Rupees"<<endl;
+		    cout<<"***************************************************************\n";
 		    
-		     cout<<"Press 1 to deposit"<<endl;
-		     cout<<"Press 2 to withdraw"<<endl;
-		     cin>>ch;
+		    
+		    cout<<"\n\nChoice Menu:"<<endl;
+			cout<<"************************************************************"<<endl;
+		    cout<<"1. Deposit amount "<<endl;
+		    cout<<"2. Withdraw amount "<<endl;
+		    cout<<"************************************************************\n"<<endl;
+		    
+		    cout<<"Your Choice : ";
+		    cin>>ch;
 //		     ch=getch();
 
 		     switch(ch){
 
 		     	case '1':
-
-		     		cout<<"How much cash you want to deposit??"<<endl;
+					cout<<"\n\n     Deposit amount \n";
+					cout<<"***************************************************************\n";
+					
+		     		cout<<"How much cash you want to deposit : ";
 		     		cin>>cash;
-
+		     		
+		     		a = person[i].cash;
+		     		b = cash;
 		     		person[i].cash+=cash;
-		     		cout<<"Your new cash is "<<person[i].cash<<endl;
+		     		
+		     		cout<<"Your new cash is "<<a<<" + "<<b<<" = "<<person[i].cash<<endl;
+		     		cout<<"************************************************************\n"<<endl;
 
 		     		break;
 
 		     	case '2':
 
 		     		back:
-		     		cout<<"How much cash you want to withdraw??"<<endl;
+		     		
+		     		cout<<"\n\n     Withdraw amount \n";
+					cout<<"***************************************************************\n";
+					
+		     		cout<<"How much cash you want to withdraw : ";
 		     		cin>>cash;
 
 		     		if(cash>person[i].cash){
@@ -322,12 +378,16 @@ void Bank::transactions(){
 		     			cout<<"Your existing cash is just "<<person[i].cash<<endl;
 		     			Sleep(3000);
 		     			goto back;
-					 }
+					}
+					
+					a = person[i].cash;
+		     		b = cash;
+					person[i].cash-=cash;
+				
+					cout<<"Your new cash is "<<a<<" - "<<b<<" = "<<person[i].cash<<endl;
+		     		cout<<"************************************************************\n"<<endl;
 
-					 person[i].cash-=cash;
-					 cout<<"Your new cash is "<<person[i].cash<<endl;
-
-					 break;
+					break;
 
 				default:
 					cout<<"Invalid input"<<endl;
@@ -340,77 +400,80 @@ void Bank::transactions(){
 		 }
 
 		 if(i==total-1){
-
+			cout<<"\n************************************************************"<<endl;
 		 	cout<<"No such record found"<<endl;
 
 		 }
 
-	 }
+	 } // end of for loop
 
-}
+} // end of transactions()
+
+
 
 void Bank::deleteData(){
+	
+	cout<<"***************************************************************\n";
+	cout<<"              Removing/Deleting an account from record list \n";
+	cout<<"***************************************************************\n\n";
 
 	char ch;
-
-	cout<<"Press 1 to remove specific record"<<endl;
-
-	cout<<"Press 2 to remove full record"<<endl;
+	
+	cout<<"\nChoice Menu:"<<endl;
+	cout<<"************************************************************"<<endl;
+	cout<<"1. Remove specific person account from record list"<<endl;
+	cout<<"2. Remove full record list of account holders"<<endl;
+	cout<<"************************************************************\n"<<endl;
+		 
+	cout<<"Your Choice : ";	    
 	cin>>ch;
 //	ch=getch();
 
 	switch(ch){
-
-		case '1':
-
-		cout<<"Enter id of person those data you want to remove"<<endl;
+	   case '1':
+	  	
+		cout<<"\nEnter id of person, whom data you want to remove : ";
      	cin>>id;
 
-	     for(int i=0;i<total;i++){
+	    for(int i=0;i<total;i++){
+			
+			if(id==person[i].ID){
+				
+				for(int j=i;j<total;j++){
+					person[j].name==person[j+1].name;
+		     		person[j].ID=person[j+1].ID;
+		     		person[j].address==person[j+1].address;
+		     		person[j].contact=person[j+1].contact;
+		     		person[j].cash=person[j+1].cash;
+		
+		     		total--;
+		     		
+		     		cout<<"\n************************************************************\n"<<endl;
+		     		cout<<"Your required data is deleted"<<endl;
 	
-	     	if(id==person[i].ID){
+	     			break;
 	
-	     		for(int j=i;j<total;j++){
+				 } // end of inner for loop
 	
-	     		person[j].name==person[j+1].name;
-	
-	     		person[j].ID=person[j+1].ID;
-	
-	     		person[j].address==person[j+1].address;
-	
-	     		person[j].contact=person[j+1].contact;
-	
-	     		person[j].cash=person[j+1].cash;
-	
-	     		total--;
-	
-	     		cout<<"Your required data is deleted"<<endl;
-	
-	     		break;
-	
-				 }
-	
-			 }
+			 } // end of if statement
 	
 			 if(i=total-1){
+				cout<<"No such record found"<<endl;
+				cout<<"************************************************************\n"<<endl;
+			 } // end of if statement
+			 
+		 }  // end of for outer loop
 	
-			cout<<"No such record found"<<endl;
-	
-			 }
-	
-		 }
-	
-		 break;
+	    break;
 
-	 	case '2':
-
-		 	total=0;
-	
-		 	cout<<"All record is deleted"<<endl;
-	
-		 	break;	
+	   case '2':
+		  	total=0;
+		  	cout<<"\n************************************************************"<<endl;
+			cout<<"All record is deleted"<<endl;
+			break;	
 
 		default:
+			cout<<"\n************************************************************"<<endl;
 			cout<<"Invalid Input"<<endl;
 			break;
 
